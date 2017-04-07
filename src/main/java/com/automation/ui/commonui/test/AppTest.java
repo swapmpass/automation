@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -75,14 +76,14 @@ public class AppTest extends UIUtils {
 	@BeforeTest
 	public void beforeTest() {
 		
-		//System.setProperty("webdriver.gecko.driver", "C:\\Users\\sverma3616\\Downloads\\browser_drivers\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\sverma3616\\Downloads\\browser_drivers\\geckodriver.exe");
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\sverma3616\\Downloads\\browser_drivers\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\sverma3616\\Downloads\\browser_drivers\\chromedriver.exe");
 		
 		//Following link for gecko driver executable download:
 		//https://github.com/mozilla/geckodriver/releases
-		//driver = new FirefoxDriver();
-		driver = new ChromeDriver();
+		driver = new FirefoxDriver();
+		//driver = new ChromeDriver();
 	}
 
 	@AfterTest

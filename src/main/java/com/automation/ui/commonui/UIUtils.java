@@ -86,7 +86,7 @@ public class UIUtils {
 		
 		 WebDriver driver = new FirefoxDriver();
 
-		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 		 driver.get("http://url_that_delays_loading");
 
