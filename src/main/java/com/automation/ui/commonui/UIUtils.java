@@ -26,6 +26,8 @@ public class UIUtils {
 		if (expectedIdentifier.length > 0) {
 			fluentWait(driver, expectedIdentifier[0]);	
 		}
+		
+		System.out.println("Current URL is : " + driver.getCurrentUrl());
 
 	}
 
@@ -62,24 +64,39 @@ public class UIUtils {
 		// Waiting 30 seconds for an element to be present on the page, checking
 
 		// for its presence once every 5 seconds.
-
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-
-				.withTimeout(10, TimeUnit.SECONDS)
-
-				.pollingEvery(2, TimeUnit.SECONDS)
-
-				.ignoring(NoSuchElementException.class);
 		
-		  wait.until(new Function<Object, Object>() {
+		Wait<WebDriver> wait = null;
+		
+		try {
+			
+			wait = new FluentWait<WebDriver>(driver)
 
-			@Override
-			public Object apply(Object arg0) {
-				
-				return new UIElement().getWebElement(element.getElementString(), driver, element.getElementIndenType());
-			}
+					.withTimeout(30, TimeUnit.SECONDS)
 
-		});
+					.pollingEvery(5, TimeUnit.SECONDS)
+
+					.ignoring(NoSuchElementException.class);
+			
+			  wait.until(new Function<Object, Object>() {
+
+				@Override
+				public Object apply(Object arg0) {
+					
+					return new UIElement().getWebElement(element.getElementString(), driver, element.getElementIndenType());
+				}
+
+			});
+			
+		} catch (Exception e) {
+			
+			System.out.println("Element not found : " + element.getElementString());
+			
+			System.out.println("Quit called...");
+			
+			driver.quit();
+			
+			System.exit(1);
+		}
 	}
 	
 	public void implicitWait() {

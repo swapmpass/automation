@@ -1,13 +1,20 @@
 package com.automation.ui.commonui;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.automation.ui.commonui.UIElement.SearchBy;
 
-public class EbayLogin {
+public class EbayLogin extends UIUtils {
 	
 	WebDriver driver = null;
+	
+	private String username = null;
+	private String password = null;
 	
 	public EbayLogin(WebDriver driver) {
 		
@@ -23,8 +30,27 @@ public class EbayLogin {
 
 		WebElement passwordTB = new UIElement().getWebElement(passwordTextBox, driver, SearchBy.XPATH);
 		
-		usernameTB.sendKeys("swapnilverma.vit@gmail.com");
-
+		WebElement signInBtn = new UIElement().getWebElement("sgnBt", driver, SearchBy.ID);
+		
+		UIElementIdentifier successfulSigninIden = new UIElementIdentifier("//li[@class='active']//p", SearchBy.XPATH);
+		
+		populateLoginCredentials();
+		
+		usernameTB.sendKeys(username);
+		passwordTB.sendKeys(password);
+		
+		click(signInBtn, driver, successfulSigninIden);
+	}
+	
+	private void populateLoginCredentials() {
+		
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileInputStream(new File("./src/main/resource/ebay_login.properties")));
+			username = prop.getProperty("username");
+			password = prop.getProperty("password");
+		} catch (Exception e) {
+		}
 	}
 
 }
