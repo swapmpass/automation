@@ -4,7 +4,7 @@
 	<test name="Testing Parameterization">
 	<parameter name="browser" value="Firefox"/>
 		<classes>
-			<class name="com.automation.ui.commonui.test.AppTest" />
+			<class name="com.automation.testpack.AppTest" />
 		</classes>
 	</test>
 </suite>

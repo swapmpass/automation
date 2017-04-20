@@ -15,8 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UIUtils {
 	
-	
-
 	protected void click(WebElement elementToBeClicked, WebDriver driver, UIElementIdentifier... expectedIdentifier) {
 		
 		// http://toolsqa.com/selenium-webdriver/implicit-explicit-n-fluent-wait/

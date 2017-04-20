@@ -2,15 +2,15 @@ package com.automation.ui.commonui.test;
 
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
 import com.automation.ui.commonui.EbayLogin;
 import com.automation.ui.commonui.MasterPassLogin;
@@ -84,7 +84,6 @@ public class AppTest extends UIUtils {
 		
 		WebElement citibankLogoIcon = new UIElement().getWebElement("//button[@class='logo-button command' and @data-aliases='Citibank,Citi India,Citi Bank']", driver, SearchBy.XPATH);
 		
-		UIElementIdentifier masterpassLoginTB = new UIElementIdentifier("email", SearchBy.ID);
 		click(citibankLogoIcon, driver);
 		
 		sleep(7);
@@ -100,24 +99,30 @@ public class AppTest extends UIUtils {
 		
 		WebElement finishShoppingBtn = new UIElement().getWebElement("//button[@class='button command']", driver, SearchBy.XPATH);
 		
-		UIElementIdentifier otpFrame = new UIElementIdentifier("//iframe[@id='3dssecurecode']", SearchBy.XPATH);
+		UIElementIdentifier otpFrame = new UIElementIdentifier("//iframe[@id='CentinelGeneratedFrame']", SearchBy.XPATH);
 		
 		click(finishShoppingBtn, driver, otpFrame);
 		
 		sleep(15);
 		
-		driver = driver.switchTo().frame("3dssecurecode");
+		driver = driver.switchTo().frame("CentinelGeneratedFrame");
 		
-		WebElement optLink = new UIElement().getWebElement("//a[@title='OTP (One Time Password)']", driver, SearchBy.XPATH);
+		//WebElement optLink = new UIElement().getWebElement("//a[@title='OTP (One Time Password)']", driver, SearchBy.XPATH);
 		
-		click(optLink, driver);
+		//click(optLink, driver);
 		
-		WebElement otpInput = new UIElement().getWebElement("//input[@id='otp']", driver, SearchBy.XPATH);
+		//WebElement otpInput = new UIElement().getWebElement("//input[@id='otp']", driver, SearchBy.XPATH);
 		
-		otpInput.sendKeys("1234567890");
+		//otpInput.sendKeys("1234567890");
+		
+		WebElement passwordBox = new UIElement().getWebElement("ipincode", driver, SearchBy.ID);
+		
+		passwordBox.sendKeys("123456789");
+		
+		WebElement nextButton = new UIElement().getWebElement("next", driver, SearchBy.ID);
 	}
 	
-	@BeforeTest
+	@Before
 	public void beforeTest() {
 		
 		//System.setProperty("webdriver.gecko.driver", "C:\\Users\\sverma3616\\Downloads\\browser_drivers\\geckodriver.exe");
@@ -130,7 +135,7 @@ public class AppTest extends UIUtils {
 		driver = new ChromeDriver();
 	}
 
-	@AfterTest
+	@After
 	public void afterTest() {
 		driver.quit();
 	}
