@@ -28,13 +28,13 @@ public class MySteps extends UIUtils {
 		System.setProperty("webdriver.gecko.driver",
 				"C:\\Users\\sverma3616\\Downloads\\browser_drivers\\geckodriver.exe");
 
-		//System.setProperty("webdriver.chrome.driver",
-		//		"C:\\Users\\sverma3616\\Downloads\\browser_drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\sverma3616\\Downloads\\browser_drivers\\chromedriver.exe");
 
 		// Following link for gecko driver executable download:
 		// https://github.com/mozilla/geckodriver/releases
-		driver = new FirefoxDriver();
-		// driver = new ChromeDriver();
+		//driver = new FirefoxDriver();
+		driver = new ChromeDriver();
 		driver.get("http://www.ebay.in/");
 		
 		// System.setProperty("webdriver.gecko.driver",
