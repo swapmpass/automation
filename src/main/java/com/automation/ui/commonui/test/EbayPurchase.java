@@ -10,7 +10,6 @@ import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.junit.runner.RunWith;
 
-import com.automation.ui.commonui.jbehaveplugin.Radio;
 
 import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 
@@ -32,7 +31,7 @@ public class EbayPurchase extends JUnitStory {
 	@Override
 	public InjectableStepsFactory stepsFactory() {
 		// varargs, can have more that one steps classes
-		return new InstanceStepsFactory(configuration(), new MySteps(), new Radio());
+		return new InstanceStepsFactory(configuration(), new MySteps());
 	}
 
 }

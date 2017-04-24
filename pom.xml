@@ -17,11 +17,12 @@
 	<dependencies>
 
 		<dependency>
-<<<<<<< HEAD
 			<groupId>de.codecentric</groupId>
 			<artifactId>jbehave-junit-runner</artifactId>
 			<version>1.2.0</version>
-=======
+		</dependency>
+		
+		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
 			<version>${jbehave.version}</version>
@@ -37,7 +38,6 @@
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-spring</artifactId>
 			<version>${jbehave.version}</version>
->>>>>>> 9b43c1e5e74f387b2f9fd8230eb2c778fe801a1a
 		</dependency>
 
 		<dependency>
@@ -53,8 +53,6 @@
 		</dependency>
 
 		<dependency>
-<<<<<<< HEAD
-=======
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
@@ -64,14 +62,11 @@
 			<version>6.11</version> </dependency> -->
 
 		<dependency>
->>>>>>> 9b43c1e5e74f387b2f9fd8230eb2c778fe801a1a
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>3.3.1</version>
 		</dependency>
 
-<<<<<<< HEAD
-=======
 		<dependency>
 			<groupId>com.mastercard.masterpass.merchant</groupId>
 			<artifactId>mastercard-masterpass-merchant</artifactId>
@@ -82,7 +77,6 @@
 			<version>1.7.7</version> </dependency> <dependency> <groupId>org.slf4j</groupId> 
 			<artifactId>slf4j-log4j12</artifactId> <version>1.7.7</version> </dependency> -->
 
->>>>>>> 9b43c1e5e74f387b2f9fd8230eb2c778fe801a1a
 	</dependencies>
 
 	<build>
@@ -107,13 +101,8 @@
 				<artifactId>jbehave-maven-plugin</artifactId>
 				<version>${jbehave.version}</version>
 				<executions>
-					<!-- <execution>
-						<id>unpack-view-resources</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>unpack-view-resources</goal>
-						</goals>
-					</execution> -->
+					<!-- <execution> <id>unpack-view-resources</id> <phase>process-resources</phase> 
+						<goals> <goal>unpack-view-resources</goal> </goals> </execution> -->
 					<execution>
 						<id>embeddable-stories</id>
 						<phase>test</phase>
