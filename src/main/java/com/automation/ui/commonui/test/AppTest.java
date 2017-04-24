@@ -107,6 +107,7 @@ public class AppTest extends UIUtils {
 		sleep(15);
 		
 		driver = driver.switchTo().frame("CentinelGeneratedFrame");
+<<<<<<< HEAD
 		
 		//WebElement optLink = new UIElement().getWebElement("//a[@title='OTP (One Time Password)']", driver, SearchBy.XPATH);
 		
@@ -120,6 +121,21 @@ public class AppTest extends UIUtils {
 		
 		passwordBox.sendKeys("123456789");
 		
+=======
+		
+		//WebElement optLink = new UIElement().getWebElement("//a[@title='OTP (One Time Password)']", driver, SearchBy.XPATH);
+		
+		//click(optLink, driver);
+		
+		//WebElement otpInput = new UIElement().getWebElement("//input[@id='otp']", driver, SearchBy.XPATH);
+		
+		//otpInput.sendKeys("1234567890");
+		
+		WebElement passwordBox = new UIElement().getWebElement("ipincode", driver, SearchBy.ID);
+		
+		passwordBox.sendKeys("123456789");
+		
+>>>>>>> 9b43c1e5e74f387b2f9fd8230eb2c778fe801a1a
 		WebElement nextButton = new UIElement().getWebElement("next", driver, SearchBy.ID);
 	}
 	

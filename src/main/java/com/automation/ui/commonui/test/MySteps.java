@@ -8,7 +8,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+<<<<<<< HEAD
 import org.openqa.selenium.firefox.FirefoxDriver;
+=======
+>>>>>>> 9b43c1e5e74f387b2f9fd8230eb2c778fe801a1a
 
 import com.automation.ui.commonui.EbayLogin;
 import com.automation.ui.commonui.MasterPassLogin;
@@ -25,6 +28,7 @@ public class MySteps extends UIUtils {
 
 	@Given("on ebay page")
 	public void givenOnEbayPage() {
+<<<<<<< HEAD
 		
 		System.setProperty("webdriver.gecko.driver",
 				"C:\\Users\\sverma3616\\Downloads\\browser_drivers\\geckodriver.exe");
@@ -38,6 +42,19 @@ public class MySteps extends UIUtils {
 		// driver = new ChromeDriver();
 		driver.get("http://www.ebay.in/");
 		
+=======
+		// System.setProperty("webdriver.gecko.driver",
+		// "C:\\Users\\sverma3616\\Downloads\\browser_drivers\\geckodriver.exe");
+
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\sverma3616\\Downloads\\browser_drivers\\chromedriver.exe");
+
+		// Following link for gecko driver executable download:
+		// https://github.com/mozilla/geckodriver/releases
+		// driver = new FirefoxDriver();
+		driver = new ChromeDriver();
+		driver.get("http://www.ebay.in/");
+>>>>>>> 9b43c1e5e74f387b2f9fd8230eb2c778fe801a1a
 		String title = driver.getTitle();
 		System.out.println(title);
 		Assert.assertTrue(title.contains("Electronics, Cars, Fashion, Collectibles, Coupons and More"));
