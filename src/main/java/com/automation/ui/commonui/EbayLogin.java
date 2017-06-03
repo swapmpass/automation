@@ -11,46 +11,47 @@ import com.automation.ui.commonui.UIElement.SearchBy;
 
 public class EbayLogin extends UIUtils {
 	
-	WebDriver driver = null;
+	WebDriver	   driver	= null;
 	
-	private String username = null;
-	private String password = null;
+	private String username	= null;
+	private String password	= null;
 	
-	public EbayLogin(WebDriver driver) {
+	public EbayLogin(final WebDriver driver) {
 		
 		this.driver = driver;
 	}
-
+	
 	public void loginEbay() {
-
-		String usernameTextBox = "//div[@id='pri_signin']//span//input[@placeholder='Email or username']";
-		String passwordTextBox = "//div[@id='pri_signin']//span//input[@placeholder='Password']";
-
-		WebElement usernameTB = new UIElement().getWebElement(usernameTextBox, driver, SearchBy.XPATH);
-
-		WebElement passwordTB = new UIElement().getWebElement(passwordTextBox, driver, SearchBy.XPATH);
 		
-		WebElement signInBtn = new UIElement().getWebElement("sgnBt", driver, SearchBy.ID);
+		final String usernameTextBox = "//div[@id='pri_signin']//span//input[@placeholder='Email or username']";
+		final String passwordTextBox = "//div[@id='pri_signin']//span//input[@placeholder='Password']";
 		
-		UIElementIdentifier successfulSigninIden = new UIElementIdentifier("//li[@class='active']//p", SearchBy.XPATH);
+		final WebElement usernameTB = new UIElement().getWebElement(usernameTextBox, this.driver, SearchBy.XPATH);
+		
+		final WebElement passwordTB = new UIElement().getWebElement(passwordTextBox, this.driver, SearchBy.XPATH);
+		
+		final WebElement signInBtn = new UIElement().getWebElement("sgnBt", this.driver, SearchBy.ID);
+		
+		final UIElementIdentifier successfulSigninIden = new UIElementIdentifier("//li[@class='active']//p",
+																				 SearchBy.XPATH);
 		
 		populateLoginCredentials();
 		
-		usernameTB.sendKeys(username);
-		passwordTB.sendKeys(password);
+		usernameTB.sendKeys(this.username);
+		passwordTB.sendKeys(this.password);
 		
-		click(signInBtn, driver, successfulSigninIden);
+		click(signInBtn, this.driver, successfulSigninIden);
 	}
 	
 	private void populateLoginCredentials() {
 		
-		Properties prop = new Properties();
+		final Properties prop = new Properties();
 		try {
 			prop.load(new FileInputStream(new File("./src/main/resource/ebay_login.properties")));
-			username = prop.getProperty("username");
-			password = prop.getProperty("password");
-		} catch (Exception e) {
+			this.username = prop.getProperty("username");
+			this.password = prop.getProperty("password");
+		} catch (final Exception e) {
 		}
 	}
-
+	
 }

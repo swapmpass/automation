@@ -4,10 +4,9 @@ import com.automation.ui.commonui.UIElement.SearchBy;
 
 public class UIElementIdentifier {
 	
-	private String elementIden = null;
+	private String	 elementIden = null;
 	
-	private SearchBy idenType = null;
-	
+	private SearchBy idenType	 = null;
 	
 	public UIElementIdentifier(String elementIdentifier, SearchBy identifierType) {
 		
@@ -23,5 +22,5 @@ public class UIElementIdentifier {
 	public SearchBy getElementIndenType() {
 		return idenType;
 	}
-
+	
 }

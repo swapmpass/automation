@@ -1,7 +1,6 @@
 package com.automation.ui.commonui;
 
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -14,30 +13,31 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UIUtils {
-	
-	protected void click(WebElement elementToBeClicked, WebDriver driver, UIElementIdentifier... expectedIdentifier) {
-		
+
+	protected void click(final WebElement elementToBeClicked, final WebDriver driver,
+			final UIElementIdentifier... expectedIdentifier) {
+
 		// http://toolsqa.com/selenium-webdriver/implicit-explicit-n-fluent-wait/
-		
+
 		elementToBeClicked.click();
-		
+
 		if (expectedIdentifier.length > 0) {
-			fluentWait(driver, expectedIdentifier[0]);	
+			fluentWait(driver, expectedIdentifier[0]);
 		}
-		
+
 		System.out.println("Current URL is : " + driver.getCurrentUrl());
 
 	}
 
-	protected void type(WebElement elementToBeClicked) {
+	protected void type(final WebElement elementToBeClicked) {
 
 	}
 
-	public WebElement getWhenVisible(By locator, int timeout, WebDriver driver) {
-		
+	public WebElement getWhenVisible(final By locator, final int timeout, final WebDriver driver) {
+
 		WebElement element = null;
 
-		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		final WebDriverWait wait = new WebDriverWait(driver, timeout);
 
 		element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
@@ -45,11 +45,11 @@ public class UIUtils {
 
 	}
 
-	public void clickWhenReady(By locator, int timeout, WebDriver driver) {
-		
+	public void clickWhenReady(final By locator, final int timeout, final WebDriver driver) {
+
 		WebElement element = null;
 
-		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		final WebDriverWait wait = new WebDriverWait(driver, timeout);
 
 		element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 
@@ -57,72 +57,84 @@ public class UIUtils {
 
 	}
 
-	public void fluentWait(WebDriver driver, UIElementIdentifier element) {
-		
+	public void fluentWait(final WebDriver driver, final WebElement element) {
+
 		// Waiting 30 seconds for an element to be present on the page, checking
-
 		// for its presence once every 5 seconds.
-		
+
 		Wait<WebDriver> wait = null;
-		
+
 		try {
-			
-			wait = new FluentWait<WebDriver>(driver)
 
-					.withTimeout(30, TimeUnit.SECONDS)
-
-					.pollingEvery(5, TimeUnit.SECONDS)
-
+			wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS).pollingEvery(5, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class);
-			
-			  wait.until(new Function<Object, Object>() {
+			wait.until(arg0 -> element);
 
-				@Override
-				public Object apply(Object arg0) {
-					
-					return new UIElement().getWebElement(element.getElementString(), driver, element.getElementIndenType());
-				}
+		} catch (final Exception e) {
 
-			});
-			
-		} catch (Exception e) {
-			
-			System.out.println("Element not found : " + element.getElementString());
-			
+			System.out.println("Element not found : " + element.getTagName());
+
 			System.out.println("Quit called...");
-			
+
 			driver.quit();
-			
+
 			System.exit(1);
 		}
 	}
-	
+
+	public void fluentWait(final WebDriver driver, final UIElementIdentifier element) {
+
+		// Waiting 30 seconds for an element to be present on the page, checking
+		// for its presence once every 5 seconds.
+
+		Wait<WebDriver> wait = null;
+
+		try {
+
+			wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS).pollingEvery(5, TimeUnit.SECONDS)
+					.ignoring(NoSuchElementException.class);
+
+			wait.until(arg0 -> new UIElement().getWebElement(element.getElementString(), driver,
+					element.getElementIndenType()));
+
+		} catch (final Exception e) {
+
+			System.out.println("Element not found : " + element.getElementString());
+
+			System.out.println("Quit called...");
+
+			driver.quit();
+
+			System.exit(1);
+		}
+	}
+
 	public void implicitWait() {
-		
-		 WebDriver driver = new FirefoxDriver();
 
-		 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		final WebDriver driver = new FirefoxDriver();
 
-		 driver.get("http://url_that_delays_loading");
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
-		 WebElement myDynamicElement = driver.findElement(By.id("myDynamicElement"));
+		driver.get("http://url_that_delays_loading");
+
+		final WebElement myDynamicElement = driver.findElement(By.id("myDynamicElement"));
 	}
-	
-	public void expilcitWait(WebDriver driver) {
-		
-		WebDriverWait wait = new WebDriverWait(driver, 10);
 
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("someid")));
+	public void expilcitWait(final WebDriver driver) {
+
+		final WebDriverWait wait = new WebDriverWait(driver, 10);
+
+		final WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("someid")));
 	}
-	
-	protected void sleep(int seconds) {
-		
+
+	protected void sleep(final int seconds) {
+
 		try {
 			Thread.sleep(seconds * 1000);
-		} catch (InterruptedException e) {
+		} catch (final InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 }
