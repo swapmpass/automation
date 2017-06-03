@@ -99,7 +99,10 @@
 					<target>1.8</target>
 					<verbose>true</verbose>
 					<fork>true</fork>
+<<<<<<< HEAD
 					<executable>"C:/Program Files/Java/jdk1.8.0_131/bin/javac"</executable>
+=======
+>>>>>>> 29a339326b032e1f0fb4b8aebc8f3322e00d8cc3
 					<compilerVersion>1.8</compilerVersion>
 
 				</configuration>
