@@ -35,8 +35,6 @@ public class SearchPage extends UIUtils implements AutoCloseable {
 		try (SearchPage d = new SearchPage(new FirefoxDriver());) {
 			System.out.println("");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		this.TXTBOX_Search.sendKeys(stringToSearch);
@@ -46,7 +44,6 @@ public class SearchPage extends UIUtils implements AutoCloseable {
 
 	@Override
 	public void close() throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 

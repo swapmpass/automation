@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.automation</groupId>
 	<artifactId>automation</artifactId>
@@ -11,45 +10,29 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jbehave.version>4.1</jbehave.version>
 	</properties>
 
 	<dependencies>
 
-		<dependency>
-			<groupId>org.tensorflow</groupId>
-			<artifactId>tensorflow</artifactId>
-			<version>1.2.0-rc0</version>
-		</dependency>
+		<!-- <dependency> <groupId>info.cukes</groupId> <artifactId>cucumber-core</artifactId> 
+			<version>1.2.5</version> </dependency> -->
 
-		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>jbehave-junit-runner</artifactId>
-			<version>1.2.0</version>
-		</dependency>
+		<!-- <dependency> <groupId>info.cukes</groupId> <artifactId>cucumber-java</artifactId> 
+			<version>1.2.5</version> </dependency> -->
+
+		<!-- <dependency> <groupId>info.cukes</groupId> <artifactId>cucumber-testng</artifactId> 
+			<version>1.2.5</version> </dependency> -->
 
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
-			<version>${jbehave.version}</version>
+			<version>4.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-gherkin</artifactId>
-			<version>${jbehave.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-spring</artifactId>
-			<version>${jbehave.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.1</version>
 		</dependency>
 
 		<dependency>
@@ -64,25 +47,46 @@
 			<version>1.3</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.testng</groupId> <artifactId>testng</artifactId> 
-			<version>6.11</version> </dependency> -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.11</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
-			<version>3.4.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.16</version>
+			<version>3.3.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.mastercard.masterpass.merchant</groupId>
 			<artifactId>mastercard-masterpass-merchant</artifactId>
 			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.14</version>
 		</dependency>
 
 	</dependencies>
@@ -97,47 +101,7 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-					<verbose>true</verbose>
-					<fork>true</fork>
-<<<<<<< HEAD
-					<executable>"C:/Program Files/Java/jdk1.8.0_131/bin/javac"</executable>
-=======
->>>>>>> 29a339326b032e1f0fb4b8aebc8f3322e00d8cc3
-					<compilerVersion>1.8</compilerVersion>
-
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.jbehave</groupId>
-				<artifactId>jbehave-maven-plugin</artifactId>
-				<version>${jbehave.version}</version>
-				<executions>
-					<!-- <execution> <id>unpack-view-resources</id> <phase>process-resources</phase> 
-						<goals> <goal>unpack-view-resources</goal> </goals> </execution> -->
-					<execution>
-						<id>embeddable-stories</id>
-						<phase>test</phase>
-						<configuration>
-							<outputDirectory>${project.build.directory}</outputDirectory>
-							<scope>test</scope>
-							<includes>
-								<include>**/Order1Story.java</include>
-							</includes>
-							<generateViewAfterStories>true</generateViewAfterStories>
-						</configuration>
-						<goals>
-							<goal>run-stories-with-annotated-embedder</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>log4j</groupId>
-						<artifactId>log4j</artifactId>
-						<version>1.2.16</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 
